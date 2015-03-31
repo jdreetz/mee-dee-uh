@@ -1,0 +1,23 @@
+{
+  "name": "mee-dee-uh",
+  "version": "1.0.0",
+  "description": "Mee-Dee-Uh is an application for playng with video, in a musical context.",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdreetz/mee-dee-uh.git"
+  },
+  "author": "James Reetzke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdreetz/mee-dee-uh/issues"
+  },
+  "homepage": "https://github.com/jdreetz/mee-dee-uh",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "karma": "^0.12.31"
+  }
+}
