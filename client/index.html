@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Mee Dee Uh</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body>
-	<script type="text/javascript" src="bower_components/require/build/require.min.js" data-main="main.js"></script>
+<body ng-controller="main">
+	<section class="tracks">
+		<ul>
+			<li ng-repeat="track in tracks" class="track">
+				<mdu-track></mdu-track>
+			</li>
+			<li class="track empty">
+				<button class="add_track" ng-click="selectVideo()" mdu-drop-target="addTrack"></button>
+				<input type="file" id="file_selector" style="opacity:0;width:0;height:0;" mdu-file-select="addTrack" />
+			</li>
+		</ul>
+	</section>
+	<mdu-time-clock></mdu-time-clock>
+	<mdu-track></mdu-track>
+	<script type="text/javascript" src="bower_components/requirejs/require.js" data-main="main.js"></script>
 </body>
 </html>
