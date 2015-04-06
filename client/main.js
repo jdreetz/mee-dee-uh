@@ -37,11 +37,25 @@
 				angular.module('app', ['video','controls','behaviours'])
 					.controller('main',['$scope', 'track',function($scope, track){
 						$scope.tracks = [];
+						$scope.sequences = [$scope.tracks];
 						$scope.selectVideo = function(){
 							document.querySelector('#file_selector').click();
-						};					
-						$scope.addTrack = function(file){
-							$scope.tracks.push(track.create(file));
+						};	
+						$scope.sequence_selector_visible = false;
+						$scope.toggle_sequence_selector = function(){
+							$scope.sequence_selector_visible = !$scope.sequence_selector_visible;
+						};		
+						$scope.choose_sequence = function(index){
+							$scope.tracks = $scope.sequences[index];
+						};	
+						$scope.new_sequence = function(){
+							$scope.tracks = [];
+							$scope.sequences.push($scope.tracks);
+						}	
+						$scope.addTrack = function(files){
+							for(var i = 0, l = files.length; i < l; i++){
+								$scope.tracks.push(track.create(files[i]));
+							}
 							$scope.$apply();
 						}
 					}])

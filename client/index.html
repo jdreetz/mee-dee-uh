@@ -2,12 +2,13 @@
 <html>
 <head>
 	<title>Mee Dee Uh</title>
+	<link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body ng-controller="main">
-	<section class="tracks">
+	<section class="tracks" ng-class="{left: sequence_selector_visible}">
 		<ul>
-			<li ng-repeat="track in tracks" class="track">
+			<li ng-repeat="track in tracks" class="track" ng-class="{expanded: track.expanded}">
 				<mdu-track></mdu-track>
 			</li>
 			<li class="track empty">
@@ -16,8 +17,8 @@
 			</li>
 		</ul>
 	</section>
-	<mdu-time-clock></mdu-time-clock>
-	<mdu-track></mdu-track>
+	<mdu-transport></mdu-transport>
+	<mdu-sequence-selector></mdu-sequence-selector>
 	<script type="text/javascript" src="bower_components/requirejs/require.js" data-main="main.js"></script>
 </body>
 </html>
