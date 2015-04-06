@@ -5,14 +5,14 @@
 	<link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body ng-controller="main">
+<body ng-controller="main" mdu-drop-target="addTrack">
 	<section class="tracks" ng-class="{left: sequence_selector_visible}">
 		<ul>
 			<li ng-repeat="track in tracks" class="track" ng-class="{expanded: track.expanded}">
 				<mdu-track></mdu-track>
 			</li>
 			<li class="track empty">
-				<button class="add_track" ng-click="selectVideo()" mdu-drop-target="addTrack"></button>
+				<button class="add_track" ng-click="selectVideo()"></button>
 				<input type="file" id="file_selector" style="opacity:0;width:0;height:0;" mdu-file-select="addTrack" />
 			</li>
 		</ul>
