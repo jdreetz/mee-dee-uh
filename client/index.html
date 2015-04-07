@@ -9,7 +9,7 @@
 	<section class="tracks" ng-class="{left: sequence_selector_visible}">
 		<ul>
 			<li ng-repeat="track in tracks" class="track" ng-class="{expanded: track.expanded}">
-				<mdu-track></mdu-track>
+				<mdu-track steps="track.steps" src="track.src" expanded="track.expanded"></mdu-track>
 			</li>
 			<li class="track empty">
 				<button class="add_track" ng-click="selectVideo()"></button>
@@ -18,7 +18,7 @@
 		</ul>
 	</section>
 	<mdu-transport></mdu-transport>
-	<mdu-sequence-selector></mdu-sequence-selector>
+	<mdu-sequence-selector sequences="sequences" tracks="tracks"></mdu-sequence-selector>
 	<script type="text/javascript" src="bower_components/requirejs/require.js" data-main="main.js"></script>
 </body>
 </html>
