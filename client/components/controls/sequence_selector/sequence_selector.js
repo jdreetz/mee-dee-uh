@@ -1,4 +1,4 @@
-define(function(require){
+define(['controls.track'],function(track){
 	return {
 		directive:function(){
 			return {
@@ -9,12 +9,14 @@ define(function(require){
 				},
 				controller:function($scope){
 					$scope.choose_sequence = function(index,$event){
-						$scope.tracks = $scope.sequences[index];
+						$scope.tracks.set_steps($scope.sequences[index]);
 						$scope.sequences.active = index;
 					};	 
 					$scope.new_sequence = function(){
-						$scope.tracks = [];
-						$scope.sequences.push($scope.tracks);
+						$scope.sequences[$scope.sequences.active] = $scope.tracks.get_steps();
+						$scope.sequences.push(track.static.init_steps(8,$scope.tracks.length));
+						$scope.sequences.active++;
+						$scope.tracks.set_steps($scope.sequences[$scope.sequences.active]);
 					};
 					$scope.$on('toggle_sequence',function(){
 						$scope.visible = !$scope.visible;
@@ -24,8 +26,12 @@ define(function(require){
 	    		replace:true
 			};
 		},
-		factory:function(){
-			return {}
+		factory:function(tracks){
+			return {
+				create:function(num_steps,num_tracks){
+					return track.static.init_steps(num_steps,num_tracks);
+				}
+			}
 		}
 	};
 });

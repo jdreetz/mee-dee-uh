@@ -15,6 +15,7 @@
 				'controls.init':'components/controls/controls_init',
 				'controls.transport':'components/controls/transport/transport',
 				'controls.track':'components/controls/track/track',
+				'controls.tracks':'components/controls/track/tracks',
 				'controls.track.settings':'components/controls/track/settings',
 				'controls.sequence_selector':'components/controls/sequence_selector/sequence_selector',
 				'behaviours.init':'components/behaviours/behaviour_init'
@@ -35,10 +36,10 @@
 			], 
 			function(angular,video,control,time_clock, behaviours){
 				angular.module('app', ['video','controls','behaviours'])
-					.controller('main',['$scope','track',function($scope,track){
-						$scope.tracks = [];
-						$scope.sequences = [$scope.tracks];
-						$scope.sequences.active = 0
+					.controller('main',['$scope','track','tracks','sequence',function($scope, track, tracks, sequence){
+						$scope.tracks = tracks.create();
+						$scope.sequences = sequence.create(8,1);
+						$scope.sequences.active = 0;
 						$scope.selectVideo = function(){
 							document.querySelector('#file_selector').click();
 						};

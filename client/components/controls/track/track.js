@@ -1,5 +1,22 @@
 define(function(require){
-	return {
+	var track = {
+		step:{
+			factory:function(){
+				var STEP_MODES = {
+	   				TIME_SLICE:'time_slice'
+	   			};
+
+	   			return {
+	   				create: function(){
+	   					return {
+	   						on: false,
+	   						mode: STEP_MODES.TIME_SLICE
+	   					};
+	   				},
+	   				MODES: STEP_MODES
+	   			};
+			}
+		},
 		directive:function(){
 			return {
 				restrict: 'E',
@@ -25,19 +42,35 @@ define(function(require){
 				create:function(file){
 					return {
 						expanded: false,
-						steps: init_steps(8),
+						steps: track.static.init_steps(8),
 						src: $sce.trustAsResourceUrl(URL.createObjectURL(file))
 					};
 				}
 			}
-
-			function init_steps(num){
-				var steps = [];
-				for(var i = 0; i < num; i++){
-					steps.push(step.create())
+		},
+		'static':{
+			init_steps: function(num_steps,num_tracks){
+				if(num_tracks){
+					var tracks = [], i = 0;
+					for(; i < num_tracks; i++){
+						var steps = [], j = 0;
+						for(; j < num_steps; j++){
+							steps.push(track.step.factory().create())
+						}
+						tracks.push(steps);
+					}
+					return tracks;
 				}
-				return steps;
-			};
+				else{
+					var steps = [];
+					for(var i = 0; i < num_steps; i++){
+						steps.push(track.step.factory().create())
+					}
+					return steps;
+				}				
+			}
 		}
-	}
+	};
+
+	return track;
 });
