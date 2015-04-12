@@ -35,19 +35,13 @@
 			], 
 			function(angular,video,control,time_clock, behaviours){
 				angular.module('app', ['video','controls','behaviours'])
-					.controller('main',['$scope','track',function($scope, track){
+					.controller('main',['$scope','track',function($scope,track){
 						$scope.tracks = [];
 						$scope.sequences = [$scope.tracks];
+						$scope.sequences.active = 0
 						$scope.selectVideo = function(){
 							document.querySelector('#file_selector').click();
 						};
-						$scope.toggle_sequence_selector = function(){
-							$scope.sequence_selector_visible = !$scope.sequence_selector_visible;
-						};		
-						$scope.new_sequence = function(){
-							$scope.tracks = [];
-							$scope.sequences.push($scope.tracks);
-						}	
 						$scope.addTrack = function(files){
 							for(var i = 0, l = files.length; i < l; i++){
 								$scope.tracks.push(track.create(files[i]));

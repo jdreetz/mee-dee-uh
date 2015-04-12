@@ -2,7 +2,7 @@ define(
 	['angular','controls.transport','controls.track','controls.track.settings','controls.sequence_selector'], 
 	function (angular, transport, track, track_settings, sequence) {	
 	   	angular.module('controls',[])
-	   		.directive('mduTransport', transport)
+	   		.directive('mduTransport',['$rootScope',transport])
 	   		.directive('mduTrack', track.directive)
 	   		.directive('mduTrackSettings', track_settings)
 	   		.directive('mduSequenceSelector', sequence.directive)
@@ -21,8 +21,8 @@ define(
 	   				},
 	   				MODES: STEP_MODES
 	   			};
-	   		})
-	   		.factory('sequence', sequence.factory);
+	   		});
+	   		// .factory('sequence', sequence.factory);
 	    return {};
 	}
 );

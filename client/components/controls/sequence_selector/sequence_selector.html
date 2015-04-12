@@ -1,6 +1,6 @@
 <section class="sequence_selector" ng-class="{visible: visible}">
 	<ul>
-		<li ng-repeat="sequence in sequences" class="sequence" ng-click="choose_sequence($index)"></li>
+		<li ng-repeat="sequence in sequences" class="sequence" ng-click="choose_sequence($index,$event)" ng-class="{active: sequences.active == $index}"></li>
 	</ul>
 	<button class="add_sequence" ng-click="new_sequence()"></button>
 </section>

@@ -1,25 +1,31 @@
 define(function(require){
-	return function(){
-		var directive = {
-			restrict: 'E',
-			scope:{
-				sequences:'=',
-				tracks:'=',
-				visible:false
-			},
-			controller:function($scope){
-				$scope.choose_sequence = function(index){
-					this.tracks = this.sequences[index];
-				};	 
-			},
-    		templateUrl: 'components/controls/sequence_selector/sequence_selector.html',
-    		replace:true
-		};
-
-		var factory = function(){};
-		return {
-			directive:directive,
-			factory:factory
-		};
+	return {
+		directive:function(){
+			return {
+				restrict: 'E',
+				scope:{
+					sequences:'=',
+					tracks:'='
+				},
+				controller:function($scope){
+					$scope.choose_sequence = function(index,$event){
+						$scope.tracks = $scope.sequences[index];
+						$scope.sequences.active = index;
+					};	 
+					$scope.new_sequence = function(){
+						$scope.tracks = [];
+						$scope.sequences.push($scope.tracks);
+					};
+					$scope.$on('toggle_sequence',function(){
+						$scope.visible = !$scope.visible;
+					});
+				},
+	    		templateUrl: 'components/controls/sequence_selector/sequence_selector.html',
+	    		replace:true
+			};
+		},
+		factory:function(){
+			return {}
+		}
 	};
 });

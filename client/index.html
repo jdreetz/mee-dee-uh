@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body ng-controller="main" mdu-drop-target="addTrack">
-	<section class="tracks" ng-class="{left: sequence_selector_visible}">
+<body ng-controller="main" mdu-drop-target="addTrack" ng-class="{empty: tracks.length == 0}">
+	<section class="tracks">
 		<ul>
 			<li ng-repeat="track in tracks" class="track" ng-class="{expanded: track.expanded}">
 				<mdu-track steps="track.steps" src="track.src" expanded="track.expanded"></mdu-track>
@@ -18,7 +18,7 @@
 		</ul>
 	</section>
 	<mdu-transport></mdu-transport>
-	<mdu-sequence-selector sequences="sequences" tracks="tracks"></mdu-sequence-selector>
+	<mdu-sequence-selector sequences="sequences" tracks="tracks" visible="false"></mdu-sequence-selector>
 	<script type="text/javascript" src="bower_components/requirejs/require.js" data-main="main.js"></script>
 </body>
 </html>

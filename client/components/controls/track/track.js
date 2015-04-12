@@ -1,25 +1,26 @@
 define(function(require){
-	return function(){
-		var directive = {
-			restrict: 'E',
-			scope:{
-				src: '=',
-				steps: '=',				
-	   			expanded: '='				
-			},
-			controller: function($scope){
-				$scope.toggle_settings = function(){
-	   				this.expanded = !this.expanded;
-	   			};
-	   			$scope.toggle_step = function(idx){
-	   				this.steps[idx].on = !this.steps[idx].on;
-	   			}
-			},
-    		templateUrl: 'components/controls/track/track.html',
-    		replace:true
-		};
-
-		var factory = function($sce, step){
+	return {
+		directive:function(){
+			return {
+				restrict: 'E',
+				scope:{
+					src: '=',
+					steps: '=',				
+		   			expanded: '='				
+				},
+				controller: function($scope){
+					$scope.toggle_settings = function(){
+		   				this.expanded = !this.expanded;
+		   			};
+		   			$scope.toggle_step = function(idx){
+		   				this.steps[idx].on = !this.steps[idx].on;
+		   			}
+				},
+	    		templateUrl: 'components/controls/track/track.html',
+	    		replace:true
+	    	};
+		},
+		factory:function($sce, step){
 			return {
 				create:function(file){
 					return {
@@ -37,11 +38,6 @@ define(function(require){
 				}
 				return steps;
 			};
-		};
-
-		return {
-			directive: directive,
-			factory: factory
-		};
-	};
+		}
+	}
 });
