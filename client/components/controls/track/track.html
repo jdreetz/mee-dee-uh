@@ -1,0 +1,10 @@
+<section>
+	<section id="track_buttons">
+		
+	</section>
+	<video ng-src="{{src}}" ng-click="toggle_settings()">	
+	</video>
+	<ul>
+		<li class="step" ng-repeat="step in steps" ng-click="toggle_step($index)" ng-class="{on: step.on}"></li>
+	</ul>
+</section>
