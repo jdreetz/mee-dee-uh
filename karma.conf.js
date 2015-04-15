@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu Apr 09 2015 23:32:12 GMT-0400 (EDT)
+// Generated on Sun Apr 12 2015 22:15:38 GMT-0400 (EDT)
 
 module.exports = function(config) {
   config.set({
@@ -10,19 +10,26 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'requirejs'],
+    frameworks: ['mocha', 'requirejs', 'chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'main.js',
-      {pattern: 'components/**/*.js', included: false}
+      'test-main.js',
+      { pattern: 'client/bower_components/angular/angular.min.js', included: false},
+      { pattern: 'client/bower_components/angular-mocks/angular-mocks.js', included: false},
+      { pattern: 'client/components/controls/track/track.js', included: false},
+      { pattern: 'client/components/controls/track/track.html', include: false},
+      { pattern: 'test/components/controls/controls.spec.js', included: false}
+      // {pattern: 'client/**/*.js', included: false},
+      // {pattern: 'test/**/*.js', included: false}
     ],
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    // exclude: [
+    //   'client/bower_components/**/*.*'
+    // ],
 
 
     // preprocess matching files before serving them to the browser
@@ -47,16 +54,19 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: [
+        'PhantomJS' 
+        // 'Chrome'
+    ],
 
 
     // Continuous Integration mode

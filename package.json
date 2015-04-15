@@ -17,7 +17,18 @@
   },
   "homepage": "https://github.com/jdreetz/mee-dee-uh",
   "dependencies": {
+    "chai": "^2.2.0",
     "grunt": "^0.4.5",
-    "karma": "^0.12.31"
+    "grunt-karma": "^0.10.1",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-requirejs": "^0.2.2",
+    "mocha": "^2.2.4",
+    "requirejs": "^2.1.17"
+  },
+  "devDependencies": {
+    "karma-chrome-launcher": "^0.1.7"
   }
 }
